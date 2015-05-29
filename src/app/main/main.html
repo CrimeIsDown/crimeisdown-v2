@@ -2,23 +2,83 @@
 
   <div ng-include="'components/navbar/navbar.html'"></div>
 
-  <div class="jumbotron text-center">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      Always a pleasure scaffolding your apps.
-    </p>
-    <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-  </div>
-
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in awesomeThings | orderBy:'rank'">
-      <div class="thumbnail">
-        <img class="pull-right" ng-src="assets/images/{{awesomeThing.logo}}" alt="{{awesomeThing.title}}">
-        <div class="caption">
-          <h3>{{awesomeThing.title}}</h3>
-          <p>{{awesomeThing.description}}</p>
-          <p><a ng-href="{{awesomeThing.url}}">{{awesomeThing.url}}</a></p>
+    <div class="col-sm-12 col-md-8">
+      <div id="map-canvas"></div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div id="address-search">
+        <form action="#" onsubmit="showAddress(this.address.value); return false">
+          <label for="address">Address, intersection, place to search</label>
+          <div class="input-group">
+            <input autofocus="autofocus" class="form-control" name="address" placeholder="63rd and Halsted, Chicago" type="text">
+            <span class="input-group-btn">
+              <input class="btn btn-default" type="submit" value="Search">
+            </span>
+          </div>
+        </form>
+        <div class="results">
+          <table class="table table-bordered table-condensed">
+            <tbody>
+              <tr>
+                <th scope="row">Formatted Address</th>
+                <td id="formattedaddress"></td>
+              </tr>
+              <tr>
+                <th scope="row">Community Area</th>
+                <td id="communityarea"></td>
+              </tr>
+              <tr>
+                <th scope="row">Neighborhood</th>
+                <td id="neighborhood"></td>
+              </tr>
+              <tr>
+                <th scope="row">Zone / Police District</th>
+                <td id="policedistrict"></td>
+              </tr>
+              <tr>
+                <th scope="row">Police Beat</th>
+                <td id="policebeat"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="radio-search">
+        <form action="#" onsubmit="showMatches(this.radioid.value); return false">
+          <label for="radioid">Radio ID to search</label>
+          <div class="input-group">
+            <input class="form-control" name="radioid" placeholder="1234, 599, 2-1-8, 100X" type="text">
+            <span class="input-group-btn">
+              <input class="btn btn-default" type="submit" value="Search">
+            </span>
+          </div>
+        </form>
+        <div class="results">
+          <table class="table table-bordered table-condensed">
+            <tbody>
+              <tr>
+                <th scope="row">Agency</th>
+                <td id="agency"></td>
+              </tr>
+              <tr>
+                <th scope="row">Level 1 (Bureau)</th>
+                <td id="level1"></td>
+              </tr>
+              <tr>
+                <th scope="row">Level 2 (Division)</th>
+                <td id="level2"></td>
+              </tr>
+              <tr>
+                <th scope="row">Level 3 (Section)</th>
+                <td id="level3"></td>
+              </tr>
+              <tr>
+                <th scope="row">Level 4 (Unit/Assignment)</th>
+                <td id="level4"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -26,8 +86,22 @@
 
   <hr>
 
-  <div class="footer">
-    <p>With ♥ from <a href="https://twitter.com/Swiip">@Swiip</a></p>
-  </div>
+  <footer id="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <p>
+            Copyright &copy; 2014-2015 CrimeIsDown.com. All Rights Reserved.
+          </p>
+        </div>
+        <div class="col-md-7">
+          <a href="about.html">About CrimeIsDown.com</a> |
+          <a href="https://twitter.com/CrimeIsDown">Follow on Twitter</a> |
+          <a href="https://www.facebook.com/crimeisdown">Like on Facebook</a> |
+          <a href="#">Donate</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </div>
